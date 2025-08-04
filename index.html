@@ -277,32 +277,6 @@
         .nutrition-card i { font-size: 3rem; color: var(--secondary); margin-bottom: 15px; }
         .nutrition-card h3 { font-size: 1.5rem; margin-bottom: 10px; }
 
-        /* Fees Section */
-        #fees { background-color: var(--off-white); }
-        .fees-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 30px; }
-        .fee-card {
-            background: white; border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(93, 109, 126, 0.05);
-            padding: 30px; text-align: center; transition: var(--transition); border: 1px solid #ddd;
-        }
-        .fee-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(93, 109, 126, 0.1); }
-        .fee-card h3 {
-            font-size: 1.8rem; color: var(--dark); margin-bottom: 20px;
-            display: flex; align-items: center; justify-content: center; gap: 10px;
-        }
-        .fee-card h3 i { font-size: 2rem; color: var(--primary); }
-        .fee-card ul { list-style: none; padding: 0; text-align: left; margin-top: 20px; }
-        .fee-card ul li { padding: 10px 0; border-bottom: 1px dashed #eee; display: flex; justify-content: space-between; align-items: center; font-size: 1.1rem; }
-        .fee-card ul li:last-child { border-bottom: none; }
-        .fee-card ul li strong { color: var(--primary); }
-        .additional-info {
-            background: #fff3cd; border-left: 5px solid #ffc107;
-            padding: 20px; border-radius: 8px; margin-top: 40px; color: #664d03;
-        }
-        .additional-info h3 { color: #664d03; margin-bottom: 15px; font-size: 1.4rem; }
-        .additional-info ul { list-style: disc; margin-left: 20px; }
-        .additional-info ul li { margin-bottom: 10px; }
-
         /* Gallery Section */
         #gallery { background-color: var(--light); }
         .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; }
@@ -507,7 +481,6 @@
                     <li><a href="#about" class="nav-link"><i class="fas fa-info-circle"></i> About</a></li>
                     <li><a href="#programs" class="nav-link"><i class="fas fa-calendar-alt"></i> Programs</a></li>
                     <li><a href="#nutrition" class="nav-link"><i class="fas fa-apple-alt"></i> Nutrition</a></li>
-                    <li><a href="#fees" class="nav-link"><i class="fas fa-dollar-sign"></i> Fees</a></li>
                     <li><a href="#gallery" class="nav-link"><i class="fas fa-images"></i> Gallery</a></li>
                     <li><a href="#contact" class="nav-link"><i class="fas fa-phone-alt"></i> Contact</a></li>
                     <li><a href="#contact" class="btn nav-link">Enroll Now</a></li>
@@ -634,39 +607,6 @@
         </div>
     </section>
 
-    <!-- Fees Section -->
-    <section id="fees">
-        <div class="container">
-            <h2 class="section-title">Our Fees</h2>
-            <div class="fees-grid">
-                <div class="fee-card">
-                    <h3><i class="fas fa-sack-dollar"></i> Full-Time Care</h3>
-                    <ul>
-                        <li>Infants/Toddlers/Preschool: <strong>$217.50/month</strong></li>
-                        <li>School-Age (Sept-June): <strong>$600/month</strong></li>
-                        <li>School-Age (July-August): <strong>$750/month</strong></li>
-                    </ul>
-                </div>
-                <div class="fee-card">
-                    <h3><i class="fas fa-clock"></i> Part-Time Daily Care</h3>
-                    <ul>
-                        <li>Infants: <strong>$67/day</strong></li>
-                        <li>Toddlers: <strong>$63/day</strong></li>
-                        <li>Prekindergarten: <strong>$58/day</strong></li>
-                        <li>School-Age: <strong>$50/day</strong></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="additional-info">
-                <h3>Additional Information:</h3>
-                <ul>
-                    <li>Extended Care beyond 5 PM: Additional <strong>$30 per hour</strong></li>
-                    <li>Late payment fee: <strong>$20 per day</strong> for payments received after due date</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
     <!-- Gallery Section -->
     <section id="gallery">
         <div class="container">
@@ -755,13 +695,6 @@
                         </div>
                     </div>
                     <div class="contact-item">
-                        <i class="fas fa-dollar-sign"></i>
-                        <div>
-                            <h3>Fees</h3>
-                            <p>Please refer to our <a href="#fees" class="nav-link" style="color: var(--primary); text-decoration: underline; display: inline; padding: 0;">Fees section</a> for detailed pricing.</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
                         <i class="fas fa-wheelchair"></i>
                         <div>
                             <h3>Accessibility</h3>
@@ -800,7 +733,6 @@
                     <li><a href="#about" class="nav-link">About Us</a></li>
                     <li><a href="#programs" class="nav-link">Programs</a></li>
                     <li><a href="#nutrition" class="nav-link">Nutrition</a></li>
-                    <li><a href="#fees" class="nav-link">Fees</a></li>
                     <li><a href="#gallery" class="nav-link">Gallery</a></li>
                     <li><a href="#contact" class="nav-link">Contact</a></li>
                 </ul>
@@ -929,7 +861,8 @@
             // Function to scrape website content for the AI's context
             function getWebsiteContext() {
                 let context = '';
-                document.querySelectorAll('#about, #programs, #nutrition, #fees, #contact').forEach(section => {
+                // Updated querySelectorAll to remove the #fees section
+                document.querySelectorAll('#about, #programs, #nutrition, #contact').forEach(section => {
                     context += `Section: ${section.id}\nContent: ${section.innerText}\n\n`;
                 });
                 return context;

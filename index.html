@@ -507,7 +507,6 @@
                     <li><a href="#about" class="nav-link"><i class="fas fa-info-circle"></i> About</a></li>
                     <li><a href="#programs" class="nav-link"><i class="fas fa-calendar-alt"></i> Programs</a></li>
                     <li><a href="#nutrition" class="nav-link"><i class="fas fa-apple-alt"></i> Nutrition</a></li>
-                    <li><a href="#fees" class="nav-link"><i class="fas fa-dollar-sign"></i> Fees</a></li>
                     <li><a href="#gallery" class="nav-link"><i class="fas fa-images"></i> Gallery</a></li>
                     <li><a href="#contact" class="nav-link"><i class="fas fa-phone-alt"></i> Contact</a></li>
                     <li><a href="#contact" class="btn nav-link">Enroll Now</a></li>
@@ -630,39 +629,6 @@
                     <h3>Healthy Snacks</h3>
                     <p>Offers nutritious snacks, such as fresh fruit, yogurt, and whole-grain options, to keep energy levels stable throughout the day.</p>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Fees Section -->
-    <section id="fees">
-        <div class="container">
-            <h2 class="section-title">Our Fees</h2>
-            <div class="fees-grid">
-                <div class="fee-card">
-                    <h3><i class="fas fa-sack-dollar"></i> Full-Time Care</h3>
-                    <ul>
-                        <li>Infants/Toddlers/Preschool: <strong>$217.50/month</strong></li>
-                        <li>School-Age (Sept-June): <strong>$600/month</strong></li>
-                        <li>School-Age (July-August): <strong>$750/month</strong></li>
-                    </ul>
-                </div>
-                <div class="fee-card">
-                    <h3><i class="fas fa-clock"></i> Part-Time Daily Care</h3>
-                    <ul>
-                        <li>Infants: <strong>$67/day</strong></li>
-                        <li>Toddlers: <strong>$63/day</strong></li>
-                        <li>Prekindergarten: <strong>$58/day</strong></li>
-                        <li>School-Age: <strong>$50/day</strong></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="additional-info">
-                <h3>Additional Information:</h3>
-                <ul>
-                    <li>Extended Care beyond 5 PM: Additional <strong>$30 per hour</strong></li>
-                    <li>Late payment fee: <strong>$20 per day</strong> for payments received after due date</li>
-                </ul>
             </div>
         </div>
     </section>
@@ -800,7 +766,6 @@
                     <li><a href="#about" class="nav-link">About Us</a></li>
                     <li><a href="#programs" class="nav-link">Programs</a></li>
                     <li><a href="#nutrition" class="nav-link">Nutrition</a></li>
-                    <li><a href="#fees" class="nav-link">Fees</a></li>
                     <li><a href="#gallery" class="nav-link">Gallery</a></li>
                     <li><a href="#contact" class="nav-link">Contact</a></li>
                 </ul>
@@ -929,7 +894,7 @@
             // Function to scrape website content for the AI's context
             function getWebsiteContext() {
                 let context = '';
-                document.querySelectorAll('#about, #programs, #nutrition, #fees, #contact').forEach(section => {
+                document.querySelectorAll('#about, #programs, #nutrition, #contact').forEach(section => {
                     context += `Section: ${section.id}\nContent: ${section.innerText}\n\n`;
                 });
                 return context;

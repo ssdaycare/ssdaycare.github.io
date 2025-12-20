@@ -3,1020 +3,884 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sparkling Stars Daycare | Where Every Child Shines</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Updated Google Fonts to include Nunito -->
+    <title>Sparkling Stars Daycare</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>
-        /* Basic Reset & Variables */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            /* New Light & Playful Color Palette */
-            --primary: #FF7F50; /* Coral */
-            --secondary: #48D1CC; /* Medium Turquoise */
-            --accent: #FFD700; /* Gold */
-            --light: #FFFFFF;
-            --off-white: #F8F9FA;
-            --dark: #5D6D7E; /* Soft Dark Gray for Text */
-            --bg-light-1: #E0F7FA; /* Light Cyan */
-            --bg-light-2: #FFF9C4; /* Light Yellow */
-            --bg-light-3: #F8BBD0; /* Light Pink */
-            --bg-light-4: #D1C4E9; /* Light Purple */
-            --transition: all 0.3s ease;
-        }
-
-        @keyframes background-pan {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            color: var(--dark);
-            line-height: 1.6;
-            overflow-x: hidden; /* Prevent horizontal scroll */
-            /* New Animated Gradient Background */
-            background: linear-gradient(120deg, var(--bg-light-1), var(--bg-light-2), var(--bg-light-3), var(--bg-light-4));
-            background-size: 400% 400%;
-            animation: background-pan 30s ease infinite;
-        }
-
-        html {
-            scroll-padding-top: 80px;
-        }
-
-        /* Updated Typography */
-        h1, h2, h3, h4 {
-            font-family: 'Nunito', sans-serif; /* Professional & friendly font */
-            font-weight: 800; /* Bolder for headings */
-            color: var(--dark);
-        }
-
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header Styles */
-        header {
-            background: rgba(255, 255, 255, 0.8); /* Lighter, semi-transparent background */
-            backdrop-filter: blur(10px); /* Frosted glass effect */
-            padding: 15px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.07);
-        }
-
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            margin-bottom: 0;
-        }
-
-        .logo i {
-            font-size: 2.5rem;
-            margin-right: 10px;
-            color: var(--primary); /* Use primary color for star */
-            text-shadow: 0 0 10px rgba(255, 127, 80, 0.5);
-        }
-
-        .logo-text h1 {
-            font-size: 1.8rem;
-            color: var(--dark);
-            margin: 0;
-            line-height: 1.2;
-        }
-
-        .logo-text span {
-            font-size: 0.9rem;
-            opacity: 0.8;
-            color: var(--dark);
-        }
-
-        /* Hamburger Menu Icon */
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            justify-content: space-around;
-            width: 30px;
-            height: 25px;
-            cursor: pointer;
-            z-index: 1001;
-            padding: 5px;
-            border-radius: 5px;
-            background: rgba(0, 0, 0, 0.05);
-            transition: var(--transition);
-        }
-        .menu-toggle span {
-            display: block;
-            width: 100%;
-            height: 3px;
-            background: var(--dark); /* Dark bars for visibility */
-            border-radius: 2px;
-            transition: all 0.3s ease-in-out;
-        }
-        .menu-toggle.open span:nth-child(1) { transform: translateY(11px) rotate(45deg); }
-        .menu-toggle.open span:nth-child(2) { opacity: 0; }
-        .menu-toggle.open span:nth-child(3) { transform: translateY(-11px) rotate(-45deg); }
-
-        /* Navigation Menu */
-        nav {
-            flex-grow: 1;
-            text-align: right;
-        }
-        nav ul {
-            display: flex;
-            list-style: none;
-            flex-wrap: wrap;
-            justify-content: flex-end;
-            margin: 0;
-        }
-        nav ul li { margin-left: 25px; }
-        nav ul li a {
-            color: var(--dark);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: var(--transition);
-            padding: 5px 10px;
-            border-radius: 20px;
-            display: block;
-        }
-        nav ul li a:hover,
-        nav ul li a.active {
-            background: var(--primary);
-            color: white;
-        }
-
-        .btn {
-            display: inline-block;
-            background: var(--accent);
-            color: var(--dark);
-            padding: 12px 30px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: var(--transition);
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-            box-shadow: 0 4px 12px rgba(93, 109, 126, 0.1);
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(93, 109, 126, 0.15);
-            background: #ffc44d;
-        }
-
-        /* Section Visibility */
-        section { display: none; }
-        section.active { display: block; }
-
-        /* Hero Section */
-        #home {
-            background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.3)), url('https://raw.githubusercontent.com/ssdaycare/ssdaycare.github.io/main/writing.jpg') no-repeat center center/cover;
-            height: 85vh;
-            display: flex;
-            align-items: center;
-            text-align: center;
-            color: white;
-            position: relative;
-        }
-        .hero-content { max-width: 800px; margin: 0 auto; padding: 20px; }
-        #home h2 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            color: white;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.5);
-        }
-        #home p { font-size: 1.4rem; margin-bottom: 30px; opacity: 0.95; }
-
-        /* General Section Styling */
-        section {
-            padding: 80px 0;
-            background-color: var(--light);
-            border-bottom: 1px solid #eee;
-        }
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-            font-size: 2.8rem;
-            color: var(--dark);
-            position: relative;
-        }
-        .section-title:after {
-            content: "";
-            position: absolute;
-            width: 80px;
-            height: 4px;
-            background: var(--accent);
-            bottom: -10px; /* Adjusted position */
-            left: 50%;
-            transform: translateX(-50%);
-            border-radius: 2px;
-        }
-
-        /* Features Grid (used for Philosophy) */
-        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .feature-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(93, 109, 126, 0.05);
-            transition: var(--transition);
-            text-align: center;
-            padding: 30px 25px;
-        }
-        .feature-card:hover { transform: translateY(-10px); box-shadow: 0 10px 25px rgba(93, 109, 126, 0.1); }
-        .feature-card i { font-size: 3.5rem; color: var(--primary); margin-bottom: 20px; }
-        .feature-card h3 { margin-bottom: 15px; font-size: 1.6rem; }
-
-        /* Programs Section */
-        #programs { background-color: var(--off-white); }
-        .programs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .program-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(93, 109, 126, 0.05);
-            transition: var(--transition);
-        }
-        .program-card:hover { transform: translateY(-10px); box-shadow: 0 10px 25px rgba(93, 109, 126, 0.1); }
-        .program-img { height: 200px; background-size: cover; background-position: center; }
-        .program-content { padding: 25px; }
-        .program-content h3 { margin-bottom: 15px; color: var(--primary); }
-
-        /* Nutrition Section */
-        #nutrition { background-color: var(--light); }
-        .nutrition-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .nutrition-card {
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(93, 109, 126, 0.05);
-            padding: 30px; text-align: center; transition: var(--transition);
-        }
-        .nutrition-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(93, 109, 126, 0.1); }
-        .nutrition-card i { font-size: 3rem; color: var(--secondary); margin-bottom: 15px; }
-        .nutrition-card h3 { font-size: 1.5rem; margin-bottom: 10px; }
-
-        /* Fees Section */
-        #fees { background-color: var(--off-white); }
-        .fees-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 30px; }
-        .fee-card {
-            background: white; border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(93, 109, 126, 0.05);
-            padding: 30px; text-align: center; transition: var(--transition); border: 1px solid #ddd;
-        }
-        .fee-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(93, 109, 126, 0.1); }
-        .fee-card h3 {
-            font-size: 1.8rem; color: var(--dark); margin-bottom: 20px;
-            display: flex; align-items: center; justify-content: center; gap: 10px;
-        }
-        .fee-card h3 i { font-size: 2rem; color: var(--primary); }
-        .fee-card ul { list-style: none; padding: 0; text-align: left; margin-top: 20px; }
-        .fee-card ul li { padding: 10px 0; border-bottom: 1px dashed #eee; display: flex; justify-content: space-between; align-items: center; font-size: 1.1rem; }
-        .fee-card ul li:last-child { border-bottom: none; }
-        .fee-card ul li strong { color: var(--primary); }
-        .additional-info {
-            background: #fff3cd; border-left: 5px solid #ffc107;
-            padding: 20px; border-radius: 8px; margin-top: 40px; color: #664d03;
-        }
-        .additional-info h3 { color: #664d03; margin-bottom: 15px; font-size: 1.4rem; }
-        .additional-info ul { list-style: disc; margin-left: 20px; }
-        .additional-info ul li { margin-bottom: 10px; }
-
-        /* Gallery Section */
-        #gallery { background-color: var(--light); }
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; }
-        .gallery-item {
-            height: 250px; border-radius: 10px; overflow: hidden; position: relative;
-            box-shadow: 0 5px 15px rgba(93, 109, 126, 0.1); transition: var(--transition);
-        }
-        .gallery-item:hover { transform: scale(1.05); z-index: 10; }
-        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition); }
-        .gallery-item:hover img { transform: scale(1.1); }
-
-        /* Testimonials */
-        #testimonials {
-            background: linear-gradient(120deg, var(--bg-light-1), var(--bg-light-3));
-            color: var(--dark);
-        }
-        #testimonials .section-title { color: var(--dark); }
-        .testimonial-card {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(10px);
-            border-radius: 15px; padding: 30px; margin: 20px auto;
-            max-width: 700px; text-align: center;
-            border: 1px solid rgba(0, 0, 0, 0.1);
-        }
-        .testimonial-text { font-size: 1.2rem; font-style: italic; margin-bottom: 20px; }
-        .testimonial-author { font-weight: 600; font-size: 1.1rem; color: var(--primary); }
-
-        /* Contact Section */
-        #contact { background-color: var(--off-white); }
-        .contact-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 50px; }
-        .contact-info { display: flex; flex-direction: column; gap: 25px; }
-        .contact-item { display: flex; align-items: flex-start; gap: 15px; }
-        .contact-item i { font-size: 1.5rem; color: var(--primary); margin-top: 5px; }
-        .contact-form {
-            background: white; padding: 30px; border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(93, 109, 126, 0.05);
-            overflow: hidden;
-        }
-        .contact-form iframe { width: 100%; border: none; border-radius: 8px; height: 3012px; }
-
-        /* Footer */
-        footer {
-            background: var(--off-white);
-            color: var(--dark);
-            padding: 60px 0 30px;
-        }
-        .footer-container {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px; margin-bottom: 40px;
-        }
-        .footer-col h3 { color: var(--primary); margin-bottom: 25px; font-size: 1.5rem; }
-        .footer-links { list-style: none; padding: 0; }
-        .footer-links li { margin-bottom: 12px; }
-        .footer-links a { color: var(--dark); opacity: 0.9; text-decoration: none; transition: var(--transition); }
-        .footer-links a:hover { color: var(--primary); padding-left: 5px; opacity: 1; }
-        .social-links { display: flex; gap: 15px; margin-top: 20px; }
-        .social-links a {
-            display: inline-flex; align-items: center; justify-content: center;
-            width: 40px; height: 40px; background: rgba(0,0,0,0.05);
-            color: var(--dark); border-radius: 50%; transition: var(--transition);
-        }
-        .social-links a:hover { background: var(--primary); color: white; transform: translateY(-5px); }
-        .copyright {
-            text-align: center; padding-top: 30px;
-            border-top: 1px solid rgba(0, 0, 0, 0.1);
-            color: var(--dark); opacity: 0.7;
-            font-size: 0.9rem;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .header-container { flex-direction: row; justify-content: space-between; align-items: center; }
-            .logo { margin-bottom: 0; }
-            .menu-toggle { display: flex; }
-            nav {
-                display: flex; flex-direction: column; align-items: center;
-                max-height: 0; overflow: hidden; transition: max-height 0.5s ease-out;
-                width: 100%; background: white; position: absolute;
-                top: 70px; left: 0; box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-                padding-bottom: 10px; text-align: center;
-                height: calc(100vh - 70px); overflow-y: auto;
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF7F50',
+                        secondary: '#48D1CC',
+                        accent: '#FFD700',
+                        dark: '#5D6D7E',
+                        'bg-light-1': '#E0F7FA',
+                        'bg-light-2': '#FFF9C4',
+                        'bg-light-3': '#F8BBD0',
+                        'bg-light-4': '#D1C4E9',
+                        'off-white': '#F8F9FA'
+                    },
+                    fontFamily: {
+                        nunito: ['Nunito', 'sans-serif'],
+                        poppins: ['Poppins', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 3s ease-in-out infinite',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'fade-in': 'fadeIn 0.5s ease-out forwards',
+                    },
+                    keyframes: {
+                        'float': {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        }
+                    }
+                }
             }
-            nav.nav-open { max-height: 100vh; }
-            nav ul { flex-direction: column; align-items: center; padding: 0; width: 100%; }
-            nav ul li { margin: 10px 0; }
-            #home h2 { font-size: 2.5rem; }
-            #home p { font-size: 1.1rem; }
-            #chatbot-container { left: 15px; right: 15px; bottom: 20px; width: auto; }
-            #chatbot-window { width: 100%; height: 70vh; right: 0; }
         }
+        // Polyfill for process.env
+        window.process = { env: { API_KEY: 'AIzaSyDgtveCHxufSxZZ0Ouqtx5gOmizByDXjk8' } };
+    </script>
 
-        /* Animation */
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
+    <style>
+        body {
+            background: linear-gradient(120deg, #E0F7FA, #FFF9C4, #F8BBD0, #D1C4E9);
+            background-size: 400% 400%;
+            background-attachment: fixed;
         }
-        .floating { animation: float 3s ease-in-out infinite; }
-
-        /* Chatbot Styles */
-        #chatbot-container { position: fixed; bottom: 30px; right: 30px; z-index: 1000; }
-        #chatbot-button {
-            background: var(--primary); color: white; border: none; border-radius: 50%;
-            width: 60px; height: 60px; font-size: 1.8rem;
-            display: flex; align-items: center; justify-content: center;
-            cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            transition: all 0.3s ease;
+        .section-hidden {
+            display: none;
         }
-        #chatbot-button:hover { background: var(--secondary); transform: translateY(-3px); }
-        #chatbot-window {
-            display: none; flex-direction: column; width: 350px; height: 450px;
-            background: white; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-            overflow: hidden; position: absolute; bottom: 70px; right: 0;
-            opacity: 0; transform: translateY(20px);
-            transition: opacity 0.3s ease, transform 0.3s ease;
+        .section-active {
+            display: block;
+            animation: fadeIn 0.5s ease-out;
         }
-        #chatbot-window.open { display: flex; opacity: 1; transform: translateY(0); }
-        .chatbot-header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white; padding: 15px; font-size: 1.1rem; font-weight: 600;
-            display: flex; justify-content: space-between; align-items: center;
-            border-top-left-radius: 15px; border-top-right-radius: 15px;
+        /* Scrollbar for chat */
+        .chat-scroll::-webkit-scrollbar {
+            width: 6px;
         }
-        .chatbot-header button { background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; padding: 0 5px; }
-        .chatbot-messages { flex-grow: 1; padding: 15px; overflow-y: auto; background-color: #f0f2f5; display: flex; flex-direction: column; }
-        .chatbot-message { max-width: 80%; margin-bottom: 10px; padding: 10px 15px; border-radius: 15px; word-wrap: break-word; }
-        .chatbot-message.user { align-self: flex-end; background-color: var(--accent); color: var(--dark); border-bottom-right-radius: 5px; }
-        .chatbot-message.bot { align-self: flex-start; background-color: #e9e9eb; color: #333; border-bottom-left-radius: 5px; }
-        .chatbot-input { display: flex; padding: 10px 15px; border-top: 1px solid #eee; }
-        .chatbot-input input {
-            flex-grow: 1; border: 1px solid #ddd; border-radius: 20px;
-            padding: 8px 15px; font-size: 1rem; margin-right: 10px;
+        .chat-scroll::-webkit-scrollbar-track {
+            background: #f1f1f1;
         }
-        .chatbot-input button {
-            background: var(--primary); color: white; border: none;
-            border-radius: 20px; padding: 8px 15px; cursor: pointer;
-            transition: background 0.3s ease;
+        .chat-scroll::-webkit-scrollbar-thumb {
+            background: #d1d5db;
+            border-radius: 3px;
         }
-        .chatbot-input button:hover { background: var(--secondary); }
-        .chatbot-loading { text-align: center; padding: 10px; color: #888; font-style: italic; }
-        .chatbot-email-prompt { text-align: center; margin-top: 10px; }
-        .chatbot-email-prompt button {
-            background: var(--secondary); color: white; border: none;
-            border-radius: 20px; padding: 10px 20px; cursor: pointer;
-            margin-top: 10px; transition: background 0.3s ease;
-        }
-        .chatbot-email-prompt button:hover { background: var(--primary); }
-
-        /* Email Modal Styles */
-        .email-modal-backdrop {
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background-color: rgba(0, 0, 0, 0.5); z-index: 1002;
-            justify-content: center; align-items: center;
-        }
-        .email-modal-content {
-            background: white; padding: 25px; border-radius: 15px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3); width: 90%; max-width: 500px;
-            transform: translateY(20px); opacity: 0;
-            transition: opacity 0.3s ease, transform 0.3s ease;
-            display: flex; flex-direction: column; gap: 15px;
-        }
-        .email-modal-backdrop.open .email-modal-content { transform: translateY(0); opacity: 1; }
-        .email-modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
-        .email-modal-header h3 { margin: 0; color: var(--dark); }
-        .email-modal-header .close-button { background: none; border: none; font-size: 1.5rem; color: #555; cursor: pointer; }
-        .email-modal-content label { font-weight: 600; color: var(--dark); margin-bottom: 5px; display: block; }
-        .email-modal-content input[type="text"],
-        .email-modal-content textarea {
-            width: 100%;
-            padding: 10px; border: 1px solid #ddd; border-radius: 8px;
-            font-size: 1rem; font-family: 'Poppins', sans-serif; resize: vertical;
-        }
-        .email-modal-content textarea { min-height: 120px; }
-        .email-modal-content .btn-email {
-            background: var(--primary); color: white; border: none;
-            border-radius: 30px; padding: 12px 25px; cursor: pointer;
-            font-size: 1rem; font-weight: 600; transition: var(--transition);
-            align-self: center; margin-top: 10px;
-        }
-        .email-modal-content .btn-email:hover { background: var(--secondary); transform: translateY(-2px); }
     </style>
+
+    <!-- Import Map for Google GenAI -->
+    <script type="importmap">
+    {
+      "imports": {
+        "@google/genai": "https://esm.sh/@google/genai"
+      }
+    }
+    </script>
 </head>
-<body>
-    <!-- Header -->
-    <header>
-        <div class="container header-container">
-            <a href="#home" class="logo">
-                <i class="fas fa-star floating"></i>
-                <div class="logo-text">
-                    <h1>Sparkling Stars Daycare</h1>
-                    <span>Where every child shines</span>
+<body class="font-poppins text-dark bg-white flex flex-col min-h-screen">
+
+    <!-- NAVIGATION -->
+    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md shadow-sm py-4">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <!-- Logo -->
+            <button onclick="navigateTo('home')" class="flex items-center text-left group">
+                <div class="relative w-12 h-12 mr-3 flex-shrink-0">
+                    <!-- SVG Stars simulating Lucide icons -->
+                    <svg class="absolute -top-1 -right-1 w-5 h-5 text-secondary fill-secondary animate-pulse" style="animation-duration: 3s;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    <svg class="absolute bottom-0 -left-1 w-4 h-4 text-primary fill-primary/80 animate-pulse" style="animation-duration: 2s; animation-delay: 1s;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    <svg class="absolute top-1 left-1 w-10 h-10 text-primary fill-accent animate-float drop-shadow-sm group-hover:scale-110 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
                 </div>
-            </a>
-            <div class="menu-toggle" id="menu-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <nav id="main-nav">
-                <ul>
-                    <li><a href="#home" class="nav-link active"><i class="fas fa-home"></i> Home</a></li>
-                    <li><a href="#about" class="nav-link"><i class="fas fa-info-circle"></i> About</a></li>
-                    <li><a href="#programs" class="nav-link"><i class="fas fa-calendar-alt"></i> Programs</a></li>
-                    <li><a href="#nutrition" class="nav-link"><i class="fas fa-apple-alt"></i> Nutrition</a></li>
-                    <li><a href="#gallery" class="nav-link"><i class="fas fa-images"></i> Gallery</a></li>
-                    <li><a href="#contact" class="nav-link"><i class="fas fa-phone-alt"></i> Contact</a></li>
-                    <li><a href="#contact" class="btn nav-link">Enroll Now</a></li>
+                
+                <div>
+                    <h1 class="font-nunito font-extrabold text-xl md:text-2xl text-dark leading-tight group-hover:text-primary transition-colors">
+                        Sparkling Stars Daycare
+                    </h1>
+                    <span class="text-sm text-dark/80 font-poppins">Where every child shines</span>
+                </div>
+            </button>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="lg:hidden text-dark hover:text-primary transition-colors p-2">
+                <i id="mobile-menu-icon" class="fas fa-bars text-2xl"></i>
+            </button>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden lg:block">
+                <ul class="flex space-x-2">
+                    <li><button onclick="navigateTo('home')" class="nav-link px-4 py-2 rounded-full font-semibold transition-all duration-300 font-poppins text-dark hover:bg-primary/10 hover:text-primary" data-page="home"><i class="fas fa-home mr-2"></i>Home</button></li>
+                    <li><button onclick="navigateTo('about')" class="nav-link px-4 py-2 rounded-full font-semibold transition-all duration-300 font-poppins text-dark hover:bg-primary/10 hover:text-primary" data-page="about"><i class="fas fa-info-circle mr-2"></i>About</button></li>
+                    <li><button onclick="navigateTo('programs')" class="nav-link px-4 py-2 rounded-full font-semibold transition-all duration-300 font-poppins text-dark hover:bg-primary/10 hover:text-primary" data-page="programs"><i class="fas fa-calendar-alt mr-2"></i>Programs</button></li>
+                    <li><button onclick="navigateTo('nutrition')" class="nav-link px-4 py-2 rounded-full font-semibold transition-all duration-300 font-poppins text-dark hover:bg-primary/10 hover:text-primary" data-page="nutrition"><i class="fas fa-apple-alt mr-2"></i>Nutrition</button></li>
+                    <li><button onclick="navigateTo('gallery')" class="nav-link px-4 py-2 rounded-full font-semibold transition-all duration-300 font-poppins text-dark hover:bg-primary/10 hover:text-primary" data-page="gallery"><i class="fas fa-images mr-2"></i>Gallery</button></li>
+                    <li>
+                        <button onclick="navigateTo('contact')" class="ml-2 px-6 py-2 rounded-full font-semibold bg-accent text-dark shadow-md hover:bg-yellow-400 hover:-translate-y-1 transition-all duration-300 font-poppins">
+                            Enroll Now
+                        </button>
+                    </li>
                 </ul>
             </nav>
+
+            <!-- Mobile Dropdown -->
+            <div id="mobile-menu" class="absolute top-full left-0 w-full bg-white shadow-lg transition-all duration-500 ease-in-out lg:hidden max-h-0 opacity-0 overflow-hidden">
+                <ul class="flex flex-col p-4 space-y-2">
+                    <li><button onclick="navigateTo('home')" class="w-full text-left px-4 py-3 rounded-xl font-semibold transition-colors font-poppins text-dark hover:bg-gray-50 flex items-center"><i class="fas fa-home w-8"></i>Home</button></li>
+                    <li><button onclick="navigateTo('about')" class="w-full text-left px-4 py-3 rounded-xl font-semibold transition-colors font-poppins text-dark hover:bg-gray-50 flex items-center"><i class="fas fa-info-circle w-8"></i>About</button></li>
+                    <li><button onclick="navigateTo('programs')" class="w-full text-left px-4 py-3 rounded-xl font-semibold transition-colors font-poppins text-dark hover:bg-gray-50 flex items-center"><i class="fas fa-calendar-alt w-8"></i>Programs</button></li>
+                    <li><button onclick="navigateTo('nutrition')" class="w-full text-left px-4 py-3 rounded-xl font-semibold transition-colors font-poppins text-dark hover:bg-gray-50 flex items-center"><i class="fas fa-apple-alt w-8"></i>Nutrition</button></li>
+                    <li><button onclick="navigateTo('gallery')" class="w-full text-left px-4 py-3 rounded-xl font-semibold transition-colors font-poppins text-dark hover:bg-gray-50 flex items-center"><i class="fas fa-images w-8"></i>Gallery</button></li>
+                    <li>
+                        <button onclick="navigateTo('contact')" class="w-full mt-2 px-4 py-3 rounded-xl font-semibold bg-accent text-dark hover:bg-yellow-400 transition-colors font-poppins text-center">
+                            Enroll Now
+                        </button>
+                    </li>
+                </ul>
+            </div>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="active">
-        <div class="hero-content">
-            <h2>Welcome to Sparkling Stars Daycare</h2>
-            <p>A nurturing environment where children grow, learn, and shine</p>
-            <div class="hero-buttons">
-                <a href="#contact" class="btn nav-link">Schedule a Tour</a>
-                <a href="#about" class="btn nav-link" style="background: rgba(255, 255, 255, 0.2); color: white; margin-left: 15px;">Learn More</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about">
-        <div class="container">
-            <h2 class="section-title">About Sparkling Stars Daycare</h2>
-            <p style="text-align: center; max-width: 800px; margin: 0 auto 50px auto; font-size: 1.1rem;">
-                Sparkling Stars Daycare is a licensed child care home that provides care and supervision for up to 12 children between the ages of 12 months and 12 years. Operated in the provider’s private residence, we strive to create a safe and stimulating environment for all children. We may be able to accommodate children with delays and differing needs. Please contact us for further information.
-            </p>
-            <h2 class="section-title">Our Philosophy</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <i class="fas fa-hand-holding-heart"></i>
-                    <h3>Nurturing Environment</h3>
-                    <p>Creates a warm, safe, and inclusive space where every child feels valued and supported.</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-seedling"></i>
-                    <h3>Holistic Development</h3>
-                    <p>Focuses on the overall growth of each child – socially, emotionally, physically, and cognitively – through engaging and play-based learning.</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-child"></i>
-                    <h3>Individualized Care</h3>
-                    <p>Recognizes and adapts to the unique needs and interests of each child, fostering their curiosity and independence.</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-users"></i>
-                    <h3>Community Engagement</h3>
-                    <p>Builds strong relationships with families and the community to promote collaboration and open communication.</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-book-open"></i>
-                    <h3>Lifelong Learning</h3>
-                    <p>Encourages a love for learning by providing diverse experiences and opportunities that inspire creativity and exploration.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Programs Section -->
-    <section id="programs">
-        <div class="container">
-            <h2 class="section-title">Programs and Activities</h2>
-            <div class="programs-grid">
-                <div class="program-card">
-                    <div class="program-img" style="background-image: url('https://raw.githubusercontent.com/ssdaycare/ssdaycare.github.io/main/craftblocks.jpg');"></div>
-                    <div class="program-content">
-                        <h3>Creative Arts and Crafts</h3>
-                        <p>Engaging children in hands-on activities like painting, drawing, and crafting to foster creativity and fine motor skills.</p>
-                    </div>
-                </div>
-                <div class="program-card">
-                    <div class="program-img" style="background-image: url('https://raw.githubusercontent.com/ssdaycare/ssdaycare.github.io/main/nature.jpeg');"></div>
-                    <div class="program-content">
-                        <h3>Outdoor Play and Exploration</h3>
-                        <p>Providing structured outdoor activities, such as nature walks and games, to promote physical health and social interaction.</p>
-                    </div>
-                </div>
-                <div class="program-card">
-                    <div class="program-img" style="background-image: url('https://raw.githubusercontent.com/ssdaycare/ssdaycare.github.io/main/storytime.jpg');"></div>
-                    <div class="program-content">
-                        <h3>Storytime and Language Development</h3>
-                        <p>Offering daily story time sessions to enhance language skills, comprehension, and a love for reading.</p>
-                    </div>
-                </div>
-                <div class="program-card">
-                    <div class="program-img" style="background-image: url('https://raw.githubusercontent.com/ssdaycare/ssdaycare.github.io/main/connect4.jpg');"></div>
-                    <div class="program-content">
-                        <h3>Sensory Play</h3>
-                        <p>Incorporating activities with sand, water, and other sensory materials to stimulate exploration and sensory development.</p>
-                    </div>
-                </div>
-                <div class="program-card">
-                    <div class="program-img" style="background-image: url('https://raw.githubusercontent.com/ssdaycare/ssdaycare.github.io/main/dance.jpg');"></div>
-                    <div class="program-content">
-                        <h3>Music and Movement</h3>
-                        <p>Introducing songs, dance, and movement activities to encourage physical activity, rhythm, and coordination.</p>
+    <!-- MAIN CONTENT -->
+    <main class="flex-grow">
+        
+        <!-- HOME SECTION -->
+        <section id="home-section" class="section-active">
+            <div class="relative h-[85vh] flex items-center justify-center text-center text-white overflow-hidden">
+                <div class="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat" style="background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.3)), url('https://raw.githubusercontent.com/ssdaycare/ssdaycare.github.io/main/writing.jpg')"></div>
+                <div class="relative z-10 max-w-4xl px-4 animate-fade-in">
+                    <h2 class="text-4xl md:text-6xl font-nunito font-extrabold mb-6 text-white drop-shadow-md">
+                        Welcome to Sparkling Stars Daycare
+                    </h2>
+                    <p class="text-xl md:text-2xl font-poppins mb-10 opacity-95 max-w-2xl mx-auto drop-shadow-sm">
+                        A nurturing environment where children grow, learn, and shine
+                    </p>
+                    <div class="flex flex-col sm:flex-row justify-center gap-4">
+                        <button onclick="navigateTo('contact')" class="bg-accent text-dark px-8 py-4 rounded-full font-bold text-lg shadow-lg hover:bg-yellow-400 hover:-translate-y-1 transition-all duration-300">
+                            Schedule a Tour
+                        </button>
+                        <button onclick="navigateTo('about')" class="bg-white/20 backdrop-blur-sm text-white border-2 border-white/50 px-8 py-4 rounded-full font-bold text-lg shadow-lg hover:bg-white/30 hover:-translate-y-1 transition-all duration-300">
+                            Learn More
+                        </button>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Nutrition Section -->
-    <section id="nutrition">
-        <div class="container">
-            <h2 class="section-title">Nutrition at Sparkling Stars</h2>
-            <div class="nutrition-grid">
-                <div class="nutrition-card">
-                    <i class="fas fa-utensils"></i>
-                    <h3>Balanced Meals</h3>
-                    <p>Provides nutritious, well-rounded meals that include a variety of fruits, vegetables, whole grains, and protein sources to support healthy growth.</p>
+        <!-- ABOUT SECTION -->
+        <section id="about-section" class="section-hidden py-20 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-nunito font-extrabold text-dark mb-6 relative inline-block">
+                        About Sparkling Stars Daycare
+                        <span class="absolute bottom-[-10px] left-1/2 transform -translate-x-1/2 w-20 h-1 bg-accent rounded-full"></span>
+                    </h2>
+                    <p class="max-w-3xl mx-auto text-lg text-dark/80 font-poppins leading-relaxed mt-10" id="about-text">
+                        <!-- Filled by JS -->
+                    </p>
                 </div>
-                <div class="nutrition-card">
-                    <i class="fas fa-allergies"></i>
-                    <h3>Allergy Awareness</h3>
-                    <p>Maintains a careful approach to accommodate food allergies and dietary restrictions, ensuring all meals are safe for every child.</p>
-                </div>
-                <div class="nutrition-card">
-                    <i class="fas fa-cookie-bite"></i>
-                    <h3>Healthy Snacks</h3>
-                    <p>Offers nutritious snacks, such as fresh fruit, yogurt, and whole-grain options, to keep energy levels stable throughout the day.</p>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Gallery Section -->
-    <section id="gallery">
-        <div class="container">
-            <h2 class="section-title">Our Sparkling Moments</h2>
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="https://raw.githubusercontent.com/ssdaycare/ssdaycare.github.io/main/bouncycastle.jpg" alt="Children playing" onerror="this.onerror=null;this.src='https://placehold.co/600x400/E0F7FA/5D6D7E?text=Playtime';">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-nunito font-bold text-dark mb-10 relative inline-block">
+                        Our Philosophy
+                        <span class="absolute bottom-[-10px] left-1/2 transform -translate-x-1/2 w-16 h-1 bg-accent rounded-full"></span>
+                    </h2>
                 </div>
-                <div class="gallery-item">
-                    <img src="https://raw.githubusercontent.com/ssdaycare/ssdaycare.github.io/main/IMG_20250829_103643.jpg" alt="Arts and crafts" onerror="this.onerror=null;this.src='https://placehold.co/600x400/FFF9C4/5D6D7E?text=Crafting';">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://raw.githubusercontent.com/ssdaycare/ssdaycare.github.io/main/BC2.jpg" alt="Outdoor play" onerror="this.onerror=null;this.src='https://placehold.co/600x400/F8BBD0/5D6D7E?text=Outdoors';">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://raw.githubusercontent.com/ssdaycare/ssdaycare.github.io/main/puzzle.jpeg" alt="Story time" onerror="this.onerror=null;this.src='https://placehold.co/600x400/D1C4E9/5D6D7E?text=Story+Time';">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://raw.githubusercontent.com/ssdaycare/ssdaycare.github.io/main/assistant.jpg" alt="Learning" onerror="this.onerror=null;this.src='https://placehold.co/600x400/E0F7FA/5D6D7E?text=Learning';">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://raw.githubusercontent.com/ssdaycare/ssdaycare.github.io/main/cards.jpg" alt="Meal time" onerror="this.onerror=null;this.src='https://placehold.co/600x400/FFF9C4/5D6D7E?text=Snack+Time';">
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Testimonials -->
-    <section id="testimonials">
-        <div class="container">
-            <h2 class="section-title">What Parents Say</h2>
-            <div class="testimonial-card">
-                <p class="testimonial-text">"Sparkling Stars has been a blessing for our family. The staff truly cares about our child's development and happiness. We've seen incredible growth since he started!"</p>
-                <p class="testimonial-author">- Sarah Johnson, Parent of 3-year-old</p>
-            </div>
-            <div class="testimonial-card">
-                <p class="testimonial-text">"The teachers at Sparkling Stars are amazing! They are so dedicated and create such a positive learning environment. My daughter loves going to daycare every day."</p>
-                <p class="testimonial-author">- Emily Chen, Parent of 4-year-old</p>
-            </div>
-        </div>
-    </section>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="philosophy-grid">
+                    <!-- Filled by JS -->
+                </div>
 
-    <!-- Contact Section -->
-    <section id="contact">
-        <div class="container">
-            <h2 class="section-title">Contact Us</h2>
-            <div class="contact-container">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <h3>Our Location</h3>
-                            <p>715 Pohorecky Crescent, Saskatoon SK S7W 0J4</p>
-                            <p><a href="https://www.google.com/maps/dir/?api=1&destination=715+Pohorecky+Crescent,+Saskatoon+SK+S7W+0J4" target="_blank" style="color: var(--primary); text-decoration: underline;">Get Directions</a></p>
-                            <p>Group Family Child Care Home – Nalini Ghai</p>
+                <div class="mt-16 bg-bg-light-1/30 rounded-3xl p-8 md:p-12 border border-primary/10">
+                    <div class="flex flex-col md:flex-row items-start md:items-center gap-6">
+                        <div class="w-16 h-16 rounded-full bg-white shadow-md flex items-center justify-center text-primary flex-shrink-0">
+                            <i class="fas fa-wheelchair text-3xl"></i>
                         </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone-alt"></i>
                         <div>
-                            <h3>Business Line</h3>
-                            <p>306-850-4790</p>
-                            <p>After-Hours: 306-850-4790</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <h3>Email Us</h3>
-                            <p><a href="mailto:nalinighai04@gmail.com" style="color: var(--primary); text-decoration: underline;">nalinighai04@gmail.com</a></p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-clock"></i>
-                        <div>
-                            <h3>Hours of Operation</h3>
-                            <p>Monday - Friday, 7:30 am - 5:00 pm</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-info-circle"></i>
-                        <div>
-                            <h3>Eligibility</h3>
-                            <p>Children between the ages of 12 months - 12 years.</p>
-                            <p>May be able to accommodate children with delays and differing needs. Please contact for further information.</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-dollar-sign"></i>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-wheelchair"></i>
-                        <div>
-                            <h3>Accessibility</h3>
-                            <p>Wide doorways, adaptive play equipment with soft flooring, accessible restrooms with grab bars, and child-sized furniture. Prioritizes safety with gates, offers diverse learning materials, and ensures accessible outdoor paths. Clear emergency exits and staff training on inclusivity to support all children.</p>
+                            <h3 class="text-2xl font-nunito font-bold text-dark mb-4">Accessibility & Inclusivity</h3>
+                            <p class="text-dark/80 font-poppins leading-relaxed text-lg">
+                                Wide doorways, adaptive play equipment with soft flooring, accessible restrooms with grab bars, and child-sized furniture. We prioritize safety with gates, offer diverse learning materials, and ensure accessible outdoor paths. Clear emergency exits and staff training on inclusivity to support all children.
+                            </p>
                         </div>
                     </div>
                 </div>
-                <div class="contact-form">
-                    <h3>Application Process</h3>
-                    <p style="margin-bottom: 20px;">Fill out the form below to begin the application process or inquire further:</p>
-                    <!-- Google Form Integration -->
-                    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdF2yckT8IjKUuq7XyhC5IDn7fjYWqipkS2h1EA7CWl6Ts_tA/viewform?embedded=true" width="100%" height="3012" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
-                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container footer-container">
-            <div class="footer-col">
-                <h3>Sparkling Stars Daycare</h3>
-                <p>Providing a safe, nurturing, and stimulating environment for your child's growth and development.</p>
-                <div class="social-links">
-                    <a href="https://www.facebook.com/profile.php?id=61562913093091&mibextid=LQQJ4d" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <!-- PROGRAMS SECTION -->
+        <section id="programs-section" class="section-hidden py-20 bg-off-white">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-nunito font-extrabold text-dark relative inline-block">
+                        Programs and Activities
+                        <span class="absolute bottom-[-10px] left-1/2 transform -translate-x-1/2 w-20 h-1 bg-accent rounded-full"></span>
+                    </h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="programs-grid">
+                    <!-- Filled by JS -->
                 </div>
             </div>
-            <div class="footer-col">
-                <h3>Quick Links</h3>
-                <ul class="footer-links">
-                    <li><a href="#home" class="nav-link">Home</a></li>
-                    <li><a href="#about" class="nav-link">About Us</a></li>
-                    <li><a href="#programs" class="nav-link">Programs</a></li>
-                    <li><a href="#nutrition" class="nav-link">Nutrition</a></li>
-                    <li><a href="#gallery" class="nav-link">Gallery</a></li>
-                    <li><a href="#contact" class="nav-link">Contact</a></li>
-                </ul>
+        </section>
+
+        <!-- NUTRITION SECTION -->
+        <section id="nutrition-section" class="section-hidden py-20 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-nunito font-extrabold text-dark relative inline-block">
+                        Nutrition at Sparkling Stars
+                        <span class="absolute bottom-[-10px] left-1/2 transform -translate-x-1/2 w-20 h-1 bg-accent rounded-full"></span>
+                    </h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="nutrition-grid">
+                    <!-- Filled by JS -->
+                </div>
             </div>
-            <div class="footer-col">
-                <h3>Contact Info</h3>
-                <ul class="footer-links">
-                    <li><i class="fas fa-map-marker-alt"></i> 715 Pohorecky Crescent, Saskatoon SK S7W 0J4</li>
-                    <li><i class="fas fa-phone-alt"></i> 306-850-4790</li>
-                    <li><i class="fas fa-envelope"></i> nalinighai04@gmail.com</li>
-                </ul>
+        </section>
+
+        <!-- GALLERY SECTION -->
+        <section id="gallery-section" class="section-hidden py-20 bg-off-white">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-nunito font-extrabold text-dark relative inline-block">
+                        Our Sparkling Moments
+                        <span class="absolute bottom-[-10px] left-1/2 transform -translate-x-1/2 w-20 h-1 bg-accent rounded-full"></span>
+                    </h2>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="gallery-grid">
+                    <!-- Filled by JS -->
+                </div>
             </div>
-        </div>
-        <div class="copyright">
-            <p>© 2025 Sparkling Stars Daycare. All rights reserved.</p>
+        </section>
+
+        <!-- TESTIMONIALS SECTION (Also displayed on Home) -->
+        <section id="testimonials-section" class="py-20 bg-gradient-to-br from-bg-light-1 via-bg-light-2 to-bg-light-3">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-nunito font-extrabold text-dark relative inline-block">
+                        What Parents Say
+                        <span class="absolute bottom-[-10px] left-1/2 transform -translate-x-1/2 w-20 h-1 bg-accent rounded-full"></span>
+                    </h2>
+                </div>
+                <div class="flex flex-col md:flex-row gap-8 justify-center" id="testimonials-grid">
+                    <!-- Filled by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section id="contact-section" class="section-hidden py-20 bg-off-white">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-10 lg:mb-16">
+                    <h2 class="text-4xl md:text-5xl font-nunito font-extrabold text-dark relative inline-block">
+                        Contact Us
+                        <span class="absolute bottom-[-10px] left-1/2 transform -translate-x-1/2 w-20 h-1 bg-accent rounded-full"></span>
+                    </h2>
+                </div>
+
+                <!-- Jump Button Mobile -->
+                <div class="lg:hidden flex justify-center mb-10">
+                    <button onclick="scrollToForm()" class="group flex items-center gap-2 bg-accent/20 hover:bg-accent text-dark font-bold py-2 px-6 rounded-full transition-all duration-300 transform hover:-translate-y-1 border border-accent">
+                        <span>Jump to Application Form</span>
+                        <i class="fas fa-arrow-down group-hover:translate-y-1 transition-transform duration-300"></i>
+                    </button>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <!-- Contact Info -->
+                    <div class="space-y-8" id="contact-info-container">
+                        <!-- Filled by JS -->
+                    </div>
+
+                    <!-- Google Form -->
+                    <div class="flex flex-col">
+                         <!-- Jump Button Desktop -->
+                        <div class="hidden lg:flex justify-end mb-4">
+                            <button onclick="scrollToForm()" class="group flex items-center gap-2 bg-accent/20 hover:bg-accent text-dark font-bold py-2 px-6 rounded-full transition-all duration-300 transform hover:-translate-y-1 border border-accent">
+                                <span>Jump to Application Form</span>
+                                <i class="fas fa-arrow-down group-hover:translate-y-1 transition-transform duration-300"></i>
+                            </button>
+                        </div>
+                        
+                        <div id="application-form" class="bg-white rounded-2xl shadow-lg p-2 overflow-hidden h-[800px] lg:h-auto flex-grow">
+                             <div class="bg-accent/10 p-6 mb-4 rounded-xl text-center">
+                                <h3 class="text-xl font-nunito font-bold text-dark mb-2">Application Process</h3>
+                                 <p class="text-dark/70 font-poppins">Fill out the form below to begin the application process.</p>
+                            </div>
+                            <iframe 
+                                src="https://docs.google.com/forms/d/e/1FAIpQLSdF2yckT8IjKUuq7XyhC5IDn7fjYWqipkS2h1EA7CWl6Ts_tA/viewform?embedded=true" 
+                                width="100%" 
+                                height="100%" 
+                                class="w-full h-full min-h-[600px] border-0"
+                                title="Application Form"
+                            >
+                                Loading…
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-off-white pt-16 pb-8 text-dark border-t border-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                <div>
+                    <h3 class="text-2xl font-nunito font-bold text-primary mb-6">Sparkling Stars Daycare</h3>
+                    <p class="opacity-90 leading-relaxed font-poppins">
+                        Providing a safe, nurturing, and stimulating environment for your child's growth and development.
+                    </p>
+                    <div class="flex gap-4 mt-6">
+                        <a href="https://www.facebook.com/profile.php?id=61562913093091&mibextid=LQQJ4d" target="_blank" rel="noreferrer" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-dark hover:bg-primary hover:text-white transition-all transform hover:-translate-y-1">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-nunito font-bold text-primary mb-6">Quick Links</h3>
+                    <ul class="space-y-2 font-poppins">
+                        <li><button onclick="navigateTo('home')" class="w-full text-left py-2 hover:text-primary hover:pl-2 transition-all duration-300 block">Home</button></li>
+                        <li><button onclick="navigateTo('about')" class="w-full text-left py-2 hover:text-primary hover:pl-2 transition-all duration-300 block">About</button></li>
+                        <li><button onclick="navigateTo('programs')" class="w-full text-left py-2 hover:text-primary hover:pl-2 transition-all duration-300 block">Programs</button></li>
+                        <li><button onclick="navigateTo('nutrition')" class="w-full text-left py-2 hover:text-primary hover:pl-2 transition-all duration-300 block">Nutrition</button></li>
+                        <li><button onclick="navigateTo('gallery')" class="w-full text-left py-2 hover:text-primary hover:pl-2 transition-all duration-300 block">Gallery</button></li>
+                        <li><button onclick="navigateTo('contact')" class="w-full text-left py-2 hover:text-primary hover:pl-2 transition-all duration-300 block">Contact</button></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-nunito font-bold text-primary mb-6">Contact Info</h3>
+                    <ul class="space-y-4 font-poppins" id="footer-contact-info">
+                        <!-- Filled by JS -->
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-200 pt-8 text-center text-sm opacity-70 font-poppins">
+                <p>© <span id="year"></span> Sparkling Stars Daycare. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 
-    <!-- Chatbot Container -->
-    <div id="chatbot-container">
-        <button id="chatbot-button"><i class="fas fa-comment-dots"></i></button>
-        <div id="chatbot-window">
-            <div class="chatbot-header">
-                Sparky, your assistant
-                <button id="chatbot-close-button"><i class="fas fa-times"></i></button>
-            </div>
-            <div class="chatbot-messages" id="chatbot-messages">
-                <div class="chatbot-message bot">Hello! I'm Sparky, your friendly AI assistant for Sparkling Stars Daycare. How can I help you today?</div>
-            </div>
-            <div class="chatbot-input">
-                <input type="text" id="chatbot-input-field" placeholder="Ask a question...">
-                <button id="chatbot-send-button"><i class="fas fa-paper-plane"></i></button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Email Draft Modal -->
-    <div id="email-modal-backdrop" class="email-modal-backdrop">
-        <div class="email-modal-content">
-            <div class="email-modal-header">
-                <h3>Draft Email to Daycare</h3>
-                <button class="close-button" id="email-modal-close-button">×</button>
-            </div>
-            <label for="email-to">To:</label>
-            <input type="text" id="email-to" value="nalinighai04@gmail.com" readonly>
-            <label for="email-subject">Subject:</label>
-            <input type="text" id="email-subject">
-            <label for="email-body">Body:</label>
-            <textarea id="email-body"></textarea>
-            <button class="btn-email" id="send-email-button">Open in Email Client</button>
-        </div>
-    </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // --- Navigation and Page Setup ---
-            const navLinks = document.querySelectorAll('.nav-link');
-            const sections = document.querySelectorAll('section');
-            const menuToggle = document.getElementById('menu-toggle');
-            const mainNav = document.getElementById('main-nav');
-
-            function closeMobileMenu() {
-                if (mainNav.classList.contains('nav-open')) {
-                    mainNav.classList.remove('nav-open');
-                    menuToggle.classList.remove('open');
-                }
-            }
-
-            function showSection(id) {
-                sections.forEach(section => section.classList.remove('active'));
-                navLinks.forEach(link => link.classList.remove('active'));
-
-                const targetSection = document.querySelector(id);
-                if (targetSection) targetSection.classList.add('active');
-
-                const activeNavLink = document.querySelector(`nav ul li a[href="${id}"], .footer-links a[href="${id}"]`);
-                if (activeNavLink && activeNavLink.closest('header')) {
-                    activeNavLink.classList.add('active');
-                }
-
-                closeMobileMenu();
-                if (id.startsWith('#')) history.pushState(null, '', id);
-            }
-
-            navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    const targetId = this.getAttribute('href');
-                    if (targetId.startsWith('#')) {
-                        e.preventDefault();
-                        showSection(targetId);
-                        document.querySelector(targetId).scrollIntoView({ behavior: 'smooth' });
-                    }
-                });
-            });
-
-            menuToggle.addEventListener('click', () => {
-                mainNav.classList.toggle('nav-open');
-                menuToggle.classList.toggle('open');
-            });
-
-            const initialHash = window.location.hash || '#home';
-            showSection(initialHash);
-            window.addEventListener('popstate', () => showSection(window.location.hash || '#home'));
-
-            // --- AI Chatbot Logic ---
-            const chatbotButton = document.getElementById('chatbot-button');
-            const chatbotWindow = document.getElementById('chatbot-window');
-            const chatbotCloseButton = document.getElementById('chatbot-close-button');
-            const chatbotMessages = document.getElementById('chatbot-messages');
-            const chatbotInputField = document.getElementById('chatbot-input-field');
-            const chatbotSendButton = document.getElementById('chatbot-send-button');
+    <!-- CHATBOT UI -->
+    <div class="fixed bottom-4 right-4 sm:bottom-8 sm:right-8 z-[1000] flex flex-col items-end pointer-events-none">
+        <!-- Chat Window -->
+        <div id="chat-window" class="mb-4 bg-white rounded-2xl shadow-2xl w-[calc(100vw-2rem)] sm:w-96 h-[65vh] sm:h-[500px] max-h-[80vh] overflow-hidden transition-all duration-300 origin-bottom-right border border-gray-100 scale-0 opacity-0 translate-y-10 pointer-events-none flex flex-col">
             
-            const daycareEmail = 'nalinighai04@gmail.com';
-            const apiKey = 'AIzaSyDK78hdMm3nr1W9vPvTLLtM28R3a0L-amw'; // Your Gemini API Key
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
-            let websiteContext = '';
+            <!-- Chat Header -->
+            <div class="bg-gradient-to-r from-primary to-secondary p-4 flex justify-between items-center text-white shadow-sm shrink-0">
+                <div class="flex items-center gap-2">
+                    <i class="fas fa-sparkles"></i>
+                    <span class="font-nunito font-bold">Sparky, your assistant</span>
+                </div>
+                <button onclick="toggleChat()" class="hover:bg-white/20 rounded-full p-2 transition-colors">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
 
-            // --- Email Modal Elements ---
-            const emailModalBackdrop = document.getElementById('email-modal-backdrop');
-            const emailModalCloseButton = document.getElementById('email-modal-close-button');
-            const emailToField = document.getElementById('email-to');
-            const emailSubjectField = document.getElementById('email-subject');
-            const emailBodyField = document.getElementById('email-body');
-            const sendEmailButton = document.getElementById('send-email-button');
+            <!-- Messages -->
+            <div id="chat-messages" class="chat-scroll flex-1 bg-gray-50 p-4 overflow-y-auto font-poppins text-sm space-y-3">
+                <div class="flex justify-start">
+                    <div class="max-w-[85%] p-3 rounded-2xl shadow-sm bg-white text-dark border border-gray-200 rounded-bl-sm">
+                        Hello! I'm Sparky, your friendly AI assistant for Sparkling Stars Daycare. How can I help you today?
+                    </div>
+                </div>
+            </div>
 
-            // Function to scrape website content for the AI's context
-            function getWebsiteContext() {
-                let context = '';
-                document.querySelectorAll('#about, #programs, #nutrition, #contact').forEach(section => {
-                    context += `Section: ${section.id}\nContent: ${section.innerText}\n\n`;
+            <!-- Input Area -->
+            <div class="p-3 bg-white border-t border-gray-100 shrink-0">
+                <div class="flex gap-2">
+                    <input id="chat-input" type="text" placeholder="Ask a question..." class="flex-1 border border-gray-200 rounded-full px-4 py-2 text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all font-poppins" />
+                    <button onclick="handleUserChatInput()" id="send-btn" class="bg-primary text-white p-2 rounded-full hover:bg-secondary transition-colors shadow-sm w-9 h-9 flex items-center justify-center">
+                        <i class="fas fa-paper-plane text-xs"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chat Toggle Button -->
+        <button onclick="toggleChat()" id="chat-toggle-btn" class="bg-primary hover:bg-secondary text-white p-4 rounded-full shadow-lg transition-all duration-300 hover:scale-110 flex items-center justify-center w-16 h-16 pointer-events-auto z-[1001]">
+            <i class="fas fa-comment-alt text-2xl"></i>
+        </button>
+    </div>
+
+    <!-- EMAIL MODAL -->
+    <div id="email-modal" class="fixed inset-0 z-[1002] flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm hidden animate-fade-in">
+        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-lg p-6 relative transform transition-all scale-100">
+            <button onclick="closeEmailModal()" class="absolute top-4 right-4 text-gray-400 hover:text-dark transition-colors p-2 rounded-full hover:bg-gray-100">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+
+            <div class="flex items-center mb-6">
+                <div class="bg-primary/10 p-3 rounded-full mr-4">
+                    <i class="fas fa-envelope text-primary text-xl"></i>
+                </div>
+                <h3 class="text-xl font-nunito font-bold text-dark">Draft Email to Daycare</h3>
+            </div>
+
+            <div class="space-y-4 font-poppins">
+                <div>
+                    <label class="block text-sm font-bold text-dark mb-1">To:</label>
+                    <input type="text" id="modal-to" readonly class="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-2 text-dark/70 cursor-not-allowed" />
+                </div>
+                <div>
+                    <label class="block text-sm font-bold text-dark mb-1">Subject:</label>
+                    <input type="text" id="modal-subject" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" />
+                </div>
+                <div>
+                    <label class="block text-sm font-bold text-dark mb-1">Body:</label>
+                    <textarea id="modal-body" class="w-full h-32 border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all resize-none"></textarea>
+                </div>
+
+                <button onclick="sendEmail()" class="w-full bg-primary text-white font-bold py-3 rounded-xl hover:bg-secondary hover:-translate-y-1 transition-all shadow-md mt-2">
+                    Open in Email Client
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPT 1: DATA & UI LOGIC (Non-Module) -->
+    <!-- This ensures navigateTo, toggleChat, etc. are available immediately in the global scope -->
+    <script>
+        // --- CONSTANTS & DATA ---
+        window.CONTACT_INFO = {
+            address: "715 Pohorecky Crescent, Saskatoon SK S7W 0J4",
+            phone: "306-850-4790",
+            email: "nalinighai04@gmail.com",
+            hours: "Monday - Friday, 7:30 am - 5:00 pm",
+            provider: "Nalini Ghai"
+        };
+
+        window.ABOUT_TEXT = `Sparkling Stars Daycare is a licensed child care home that provides care and supervision for up to 12 children between the ages of 12 months and 12 years. Operated in the provider’s private residence, we strive to create a safe and stimulating environment for all children. We may be able to accommodate children with delays and differing needs. Please contact us for further information.`;
+
+        window.PHILOSOPHY_FEATURES = [
+            { title: "Nurturing Environment", description: "Creates a warm, safe, and inclusive space where every child feels valued and supported.", icon: "hand-holding-heart" },
+            { title: "Holistic Development", description: "Focuses on the overall growth of each child – socially, emotionally, physically, and cognitively – through engaging and play-based learning.", icon: "seedling" },
+            { title: "Individualized Care", description: "Recognizes and adapts to the unique needs and interests of each child, fostering their curiosity and independence.", icon: "child" },
+            { title: "Community Engagement", description: "Builds strong relationships with families and the community to promote collaboration and open communication.", icon: "users" },
+            { title: "Lifelong Learning", description: "Encourages a love for learning by providing diverse experiences and opportunities that inspire creativity and exploration.", icon: "book-open" }
+        ];
+
+        window.PROGRAMS = [
+            { title: "Creative Arts and Crafts", description: "Engaging children in hands-on activities like painting, drawing, and crafting to foster creativity and fine motor skills.", image: "https://raw.githubusercontent.com/ssdaycare/ssdaycare.github.io/main/craftblocks.jpg" },
+            { title: "Outdoor Play and Exploration", description: "Providing structured outdoor activities, such as nature walks and games, to promote physical health and social interaction.", image: "https://raw.githubusercontent.com/ssdaycare/ssdaycare.github.io/main/nature.jpeg" },
+            { title: "Storytime and Language Development", description: "Offering daily story time sessions to enhance language skills, comprehension, and a love for reading.", image: "https://raw.githubusercontent.com/ssdaycare/ssdaycare.github.io/main/storytime.jpg" },
+            { title: "Sensory Play", description: "Incorporating activities with sand, water, and other sensory materials to stimulate exploration and sensory development.", image: "https://raw.githubusercontent.com/ssdaycare/ssdaycare.github.io/main/connect4.jpg" },
+            { title: "Music and Movement", description: "Introducing songs, dance, and movement activities to encourage physical activity, rhythm, and coordination.", image: "https://raw.githubusercontent.com/ssdaycare/ssdaycare.github.io/main/dance.jpg" }
+        ];
+
+        window.NUTRITION_FEATURES = [
+            { title: "Balanced Meals", description: "Provides nutritious, well-rounded meals that include a variety of fruits, vegetables, whole grains, and protein sources to support healthy growth.", icon: "utensils" },
+            { title: "Allergy Awareness", description: "Maintains a careful approach to accommodate food allergies and dietary restrictions, ensuring all meals are safe for every child.", icon: "allergies" },
+            { title: "Healthy Snacks", description: "Offers nutritious snacks, such as fresh fruit, yogurt, and whole-grain options, to keep energy levels stable throughout the day.", icon: "cookie-bite" }
+        ];
+
+        window.GALLERY_IMAGES = [
+            { src: "https://raw.githubusercontent.com/ssdaycare/ssdaycare.github.io/main/bouncycastle.jpg", alt: "Children playing" },
+            { src: "https://raw.githubusercontent.com/ssdaycare/ssdaycare.github.io/main/IMG_20250829_103643.jpg", alt: "Arts and crafts" },
+            { src: "https://raw.githubusercontent.com/ssdaycare/ssdaycare.github.io/main/BC2.jpg", alt: "Outdoor play" },
+            { src: "https://raw.githubusercontent.com/ssdaycare/ssdaycare.github.io/main/puzzle.jpeg", alt: "Story time" },
+            { src: "https://raw.githubusercontent.com/ssdaycare/ssdaycare.github.io/main/assistant.jpg", alt: "Learning" },
+            { src: "https://raw.githubusercontent.com/ssdaycare/ssdaycare.github.io/main/cards.jpg", alt: "Meal time" }
+        ];
+
+        window.TESTIMONIALS = [
+            { text: "Waiting for testimonials", author: "Waiting for testimonials" },
+            { text: "Waiting for testimonials", author: "Waiting for testimonials" }
+        ];
+
+        // --- DOM POPULATION ---
+        document.addEventListener('DOMContentLoaded', () => {
+            // Populate About
+            const aboutEl = document.getElementById('about-text');
+            if(aboutEl) aboutEl.textContent = ABOUT_TEXT;
+
+            // Populate Philosophy
+            const philosophyGrid = document.getElementById('philosophy-grid');
+            if(philosophyGrid) {
+                PHILOSOPHY_FEATURES.forEach(f => {
+                    philosophyGrid.innerHTML += `
+                        <div class="bg-white rounded-2xl p-8 text-center shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border border-gray-50">
+                            <div class="mb-6"><i class="fas fa-${f.icon} text-5xl text-primary"></i></div>
+                            <h3 class="text-2xl font-nunito font-bold mb-4 text-dark">${f.title}</h3>
+                            <p class="text-dark/70 font-poppins">${f.description}</p>
+                        </div>
+                    `;
                 });
-                return context;
             }
-            websiteContext = getWebsiteContext(); // Scrape content on load
 
-            // --- Chatbot UI Handlers ---
-            chatbotButton.addEventListener('click', () => {
-                chatbotWindow.classList.toggle('open');
-                if (chatbotWindow.classList.contains('open')) chatbotInputField.focus();
+            // Populate Programs
+            const programsGrid = document.getElementById('programs-grid');
+            if(programsGrid) {
+                PROGRAMS.forEach(p => {
+                    programsGrid.innerHTML += `
+                        <div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+                            <div class="h-56 bg-cover bg-center" style="background-image: url('${p.image}')"></div>
+                            <div class="p-8">
+                                <h3 class="text-2xl font-nunito font-bold text-primary mb-4">${p.title}</h3>
+                                <p class="text-dark/80 font-poppins">${p.description}</p>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+
+            // Populate Nutrition
+            const nutritionGrid = document.getElementById('nutrition-grid');
+            if(nutritionGrid) {
+                NUTRITION_FEATURES.forEach(n => {
+                    nutritionGrid.innerHTML += `
+                        <div class="bg-white rounded-2xl p-10 text-center shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-gray-50">
+                            <div class="mb-6"><i class="fas fa-${n.icon} text-6xl text-secondary"></i></div>
+                            <h3 class="text-2xl font-nunito font-bold mb-4 text-dark">${n.title}</h3>
+                            <p class="text-dark/70 font-poppins leading-relaxed">${n.description}</p>
+                        </div>
+                    `;
+                });
+            }
+
+            // Populate Gallery
+            const galleryGrid = document.getElementById('gallery-grid');
+            if(galleryGrid) {
+                GALLERY_IMAGES.forEach(img => {
+                    galleryGrid.innerHTML += `
+                        <div class="group w-full h-64 rounded-xl overflow-hidden shadow-md relative hover:z-10 transition-all duration-300 hover:scale-105 hover:shadow-xl bg-gray-200 cursor-pointer">
+                            <img src="${img.src}" alt="${img.alt}" class="w-full h-full object-cover block transition-transform duration-500 group-hover:scale-110" onerror="this.src='https://picsum.photos/600/400'" />
+                        </div>
+                    `;
+                });
+            }
+
+            // Populate Testimonials
+            const testimonialsGrid = document.getElementById('testimonials-grid');
+            if(testimonialsGrid) {
+                TESTIMONIALS.forEach(t => {
+                    testimonialsGrid.innerHTML += `
+                        <div class="bg-white/70 backdrop-blur-lg rounded-2xl p-10 max-w-2xl w-full shadow-lg border border-white/40 text-center mx-auto">
+                            <div class="text-primary text-4xl mb-4"><i class="fas fa-quote-left"></i></div>
+                            <p class="text-xl italic text-dark/80 mb-6 font-poppins">"${t.text}"</p>
+                            <p class="font-nunito font-bold text-primary text-lg">- ${t.author}</p>
+                        </div>
+                    `;
+                });
+            }
+
+            // Populate Contact Info
+            const contactHTML = `
+                <div class="flex items-start">
+                    <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary flex-shrink-0 mt-1"><i class="fas fa-map-marker-alt text-xl"></i></div>
+                    <div class="ml-6">
+                        <h3 class="text-xl font-nunito font-bold text-dark mb-1">Our Location</h3>
+                        <p class="text-dark/70 font-poppins mb-2">${CONTACT_INFO.address}</p>
+                        <a href="https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(CONTACT_INFO.address)}" target="_blank" class="text-primary font-semibold hover:underline">Get Directions</a>
+                        <p class="text-sm text-dark/50 mt-1">Group Family Child Care Home – ${CONTACT_INFO.provider}</p>
+                    </div>
+                </div>
+                <div class="flex items-start">
+                    <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary flex-shrink-0 mt-1"><i class="fas fa-phone-alt text-xl"></i></div>
+                    <div class="ml-6">
+                        <h3 class="text-xl font-nunito font-bold text-dark mb-1">Business Line</h3>
+                        <p class="text-dark/70 font-poppins">${CONTACT_INFO.phone}</p>
+                    </div>
+                </div>
+                <div class="flex items-start">
+                    <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary flex-shrink-0 mt-1"><i class="fas fa-envelope text-xl"></i></div>
+                    <div class="ml-6">
+                        <h3 class="text-xl font-nunito font-bold text-dark mb-1">Email Us</h3>
+                        <a href="mailto:${CONTACT_INFO.email}" class="text-primary font-semibold hover:underline font-poppins">${CONTACT_INFO.email}</a>
+                    </div>
+                </div>
+                <div class="flex items-start">
+                    <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary flex-shrink-0 mt-1"><i class="fas fa-clock text-xl"></i></div>
+                    <div class="ml-6">
+                        <h3 class="text-xl font-nunito font-bold text-dark mb-1">Hours of Operation</h3>
+                        <p class="text-dark/70 font-poppins">${CONTACT_INFO.hours}</p>
+                    </div>
+                </div>
+            `;
+            const contactContainer = document.getElementById('contact-info-container');
+            if(contactContainer) contactContainer.innerHTML = contactHTML;
+            
+            // Footer Contact
+            const footerContactHTML = `
+                <li class="flex items-start"><i class="fas fa-map-marker-alt mt-1.5 w-6 text-primary flex-shrink-0"></i><span class="ml-3">${CONTACT_INFO.address}</span></li>
+                <li class="flex items-center"><i class="fas fa-phone-alt w-6 text-primary flex-shrink-0"></i><span class="ml-3">${CONTACT_INFO.phone}</span></li>
+                <li class="flex items-center"><i class="fas fa-envelope w-6 text-primary flex-shrink-0"></i><span class="ml-3">${CONTACT_INFO.email}</span></li>
+            `;
+            const footerContainer = document.getElementById('footer-contact-info');
+            if(footerContainer) footerContainer.innerHTML = footerContactHTML;
+            const yearEl = document.getElementById('year');
+            if(yearEl) yearEl.textContent = new Date().getFullYear();
+            
+            // Init Nav View
+            const initialPage = window.location.hash.replace('#', '') || 'home';
+            updateView(initialPage);
+        });
+
+        // --- NAVIGATION LOGIC ---
+        window.navigateTo = (pageId) => {
+            window.location.hash = pageId;
+            updateView(pageId);
+        };
+
+        function updateView(pageId) {
+            // Hide all sections
+            document.querySelectorAll('section').forEach(sec => {
+                sec.classList.remove('section-active');
+                sec.classList.add('section-hidden');
             });
-            chatbotCloseButton.addEventListener('click', () => chatbotWindow.classList.remove('open'));
-            chatbotSendButton.addEventListener('click', sendMessage);
-            chatbotInputField.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') sendMessage();
+            // Show Home if pageId is home, else show specific section
+            const section = document.getElementById(pageId + '-section') || document.getElementById('home-section');
+            if(section) {
+                section.classList.remove('section-hidden');
+                section.classList.add('section-active');
+            }
+            
+            // Show testimonials only on home page
+            const testimonials = document.getElementById('testimonials-section');
+            if(testimonials) {
+                if(pageId === 'home') {
+                    testimonials.classList.remove('section-hidden');
+                    testimonials.style.display = 'block';
+                } else {
+                    testimonials.classList.add('section-hidden');
+                    testimonials.style.display = 'none';
+                }
+            }
+
+            // Update Nav State
+            document.querySelectorAll('.nav-link').forEach(link => {
+                if(link.getAttribute('data-page') === pageId) {
+                    link.classList.add('bg-primary', 'text-white', 'shadow-md', '-translate-y-1');
+                    link.classList.remove('text-dark', 'hover:bg-primary/10', 'hover:text-primary');
+                } else {
+                    link.classList.remove('bg-primary', 'text-white', 'shadow-md', '-translate-y-1');
+                    link.classList.add('text-dark', 'hover:bg-primary/10', 'hover:text-primary');
+                }
             });
 
-            function addMessage(text, sender) {
-                const messageDiv = document.createElement('div');
-                messageDiv.classList.add('chatbot-message', sender);
-                messageDiv.textContent = text;
-                chatbotMessages.appendChild(messageDiv);
-                chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+            // Close mobile menu
+            const mobileMenu = document.getElementById('mobile-menu');
+            if(mobileMenu) {
+                mobileMenu.classList.add('max-h-0', 'opacity-0');
+                mobileMenu.classList.remove('max-h-[85vh]', 'opacity-100');
             }
+            const mobileIcon = document.getElementById('mobile-menu-icon');
+            if(mobileIcon) mobileIcon.className = 'fas fa-bars text-2xl';
 
-            function showLoadingIndicator() {
-                const loadingDiv = document.createElement('div');
-                loadingDiv.classList.add('chatbot-loading');
-                loadingDiv.id = 'chatbot-loading-indicator';
-                loadingDiv.textContent = 'Sparky is thinking...';
-                chatbotMessages.appendChild(loadingDiv);
-                chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        window.addEventListener('hashchange', () => {
+            const page = window.location.hash.replace('#', '') || 'home';
+            updateView(page);
+        });
+
+        // Mobile Menu Logic
+        window.toggleMobileMenu = () => {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('mobile-menu-icon');
+            
+            // Check if menu is currently hidden
+            const isHidden = menu.classList.contains('max-h-0');
+            
+            if (isHidden) {
+                // Open menu
+                menu.classList.remove('max-h-0', 'opacity-0');
+                menu.classList.add('max-h-[85vh]', 'opacity-100');
+                if(icon) icon.className = 'fas fa-times text-2xl';
+            } else {
+                // Close menu
+                menu.classList.add('max-h-0', 'opacity-0');
+                menu.classList.remove('max-h-[85vh]', 'opacity-100');
+                if(icon) icon.className = 'fas fa-bars text-2xl';
             }
+        };
 
-            function removeLoadingIndicator() {
-                const loadingDiv = document.getElementById('chatbot-loading-indicator');
-                if (loadingDiv) loadingDiv.remove();
+        // --- SCROLL TO FORM ---
+        window.scrollToForm = () => {
+            const form = document.getElementById('application-form');
+            if(form) form.scrollIntoView({ behavior: 'smooth' });
+        };
+
+        // --- CHATBOT UI LOGIC ---
+        let isChatOpen = false;
+        window.lastUserQuestion = '';
+
+        window.toggleChat = () => {
+            isChatOpen = !isChatOpen;
+            const windowEl = document.getElementById('chat-window');
+            const btnIcon = document.querySelector('#chat-toggle-btn i');
+            
+            if (isChatOpen) {
+                windowEl.classList.remove('scale-0', 'opacity-0', 'translate-y-10', 'pointer-events-none');
+                windowEl.classList.add('scale-100', 'opacity-100', 'translate-y-0', 'pointer-events-auto');
+                btnIcon.className = 'fas fa-times text-2xl';
+                setTimeout(() => {
+                    const input = document.getElementById('chat-input');
+                    if(input) input.focus();
+                }, 300);
+            } else {
+                windowEl.classList.add('scale-0', 'opacity-0', 'translate-y-10', 'pointer-events-none');
+                windowEl.classList.remove('scale-100', 'opacity-100', 'translate-y-0', 'pointer-events-auto');
+                btnIcon.className = 'fas fa-comment-alt text-2xl';
             }
+        };
 
-            // --- Core AI Interaction ---
-            async function getBotResponse(userMessage) {
-                showLoadingIndicator();
+        window.appendMessage = (text, sender) => {
+            const container = document.getElementById('chat-messages');
+            if(!container) return;
+            
+            const div = document.createElement('div');
+            div.className = `flex ${sender === 'user' ? 'justify-end' : 'justify-start'}`;
+            
+            const bubble = document.createElement('div');
+            bubble.className = `max-w-[85%] p-3 rounded-2xl shadow-sm ${sender === 'user' ? 'bg-accent text-dark rounded-br-sm' : 'bg-white text-dark border border-gray-200 rounded-bl-sm'}`;
+            bubble.textContent = text;
+            
+            div.appendChild(bubble);
+            container.appendChild(div);
+            container.scrollTop = container.scrollHeight;
+        };
 
-                const prompt = `
+        window.handleUserChatInput = () => {
+            const input = document.getElementById('chat-input');
+            const text = input.value.trim();
+            if (!text) return;
+
+            window.appendMessage(text, 'user');
+            input.value = '';
+            window.lastUserQuestion = text;
+
+            // Show loading
+            const container = document.getElementById('chat-messages');
+            const loadingDiv = document.createElement('div');
+            loadingDiv.id = 'chat-loading';
+            loadingDiv.className = 'flex justify-start';
+            loadingDiv.innerHTML = '<div class="bg-white text-gray-500 border border-gray-200 rounded-2xl rounded-bl-sm p-3 shadow-sm text-xs italic">Sparky is thinking...</div>';
+            container.appendChild(loadingDiv);
+            container.scrollTop = container.scrollHeight;
+
+            if (window.askBot) {
+                window.askBot(text);
+            } else {
+                // If bot script hasn't loaded yet
+                setTimeout(() => {
+                     document.getElementById('chat-loading').remove();
+                     window.appendMessage("I'm still waking up! Please try again in a few seconds.", 'bot');
+                }, 1000);
+            }
+        };
+
+        const chatInput = document.getElementById('chat-input');
+        if(chatInput) {
+            chatInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') window.handleUserChatInput();
+            });
+        }
+
+        // --- EMAIL MODAL LOGIC ---
+        window.openEmailModal = () => {
+            const modal = document.getElementById('email-modal');
+            if(modal) modal.classList.remove('hidden');
+            
+            const toInput = document.getElementById('modal-to');
+            const subInput = document.getElementById('modal-subject');
+            const bodyInput = document.getElementById('modal-body');
+            
+            if(toInput) toInput.value = CONTACT_INFO.email;
+            if(subInput) subInput.value = `Inquiry from Website Chat: ${window.lastUserQuestion.substring(0, 30)}...`;
+            if(bodyInput) bodyInput.value = `Dear Sparkling Stars Daycare,\n\nI was using the chatbot on your website and had the following question:\n\n"${window.lastUserQuestion}"\n\nCould you please provide me with more information?\n\nThank you,\n[Your Name]`;
+        };
+
+        window.closeEmailModal = () => {
+            const modal = document.getElementById('email-modal');
+            if(modal) modal.classList.add('hidden');
+        };
+
+        window.sendEmail = () => {
+            const subInput = document.getElementById('modal-subject');
+            const bodyInput = document.getElementById('modal-body');
+            const subject = subInput ? subInput.value : '';
+            const body = bodyInput ? bodyInput.value : '';
+            
+            const mailtoLink = `mailto:${CONTACT_INFO.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            window.location.href = mailtoLink;
+            window.closeEmailModal();
+        };
+    </script>
+
+    <!-- SCRIPT 2: AI LOGIC (Module) -->
+    <!-- This loads independently and attaches the askBot function to the window -->
+    <script type="module">
+        import { GoogleGenAI } from "@google/genai";
+
+        // Access API Key
+        const apiKey = (window.process && window.process.env && window.process.env.API_KEY) ? window.process.env.API_KEY : '';
+        const ai = new GoogleGenAI({ apiKey });
+
+        window.askBot = async (text) => {
+            try {
+                // Construct context from global variables
+                const context = `
+                    ABOUT: ${window.ABOUT_TEXT}
+                    LOCATION: ${window.CONTACT_INFO.address}.
+                    PROVIDER: ${window.CONTACT_INFO.provider}.
+                    CONTACT: Phone: ${window.CONTACT_INFO.phone}, Email: ${window.CONTACT_INFO.email}.
+                    HOURS: ${window.CONTACT_INFO.hours}.
+                    PHILOSOPHY: ${window.PHILOSOPHY_FEATURES.map(f => f.title + ": " + f.description).join('; ')}.
+                    PROGRAMS: ${window.PROGRAMS.map(p => p.title + ": " + p.description).join('; ')}.
+                    NUTRITION: ${window.NUTRITION_FEATURES.map(n => n.title + ": " + n.description).join('; ')}.
+                    ACCESSIBILITY: Wide doorways, adaptive play equipment, accessible restrooms, gates, diverse learning materials.
+                    ELIGIBILITY: Ages 12 months to 12 years. May accommodate delays/differing needs.
+                    FEES: Contact for fee schedule.
+                `;
+                
+                const systemPrompt = `
                     You are Sparky, a friendly and helpful AI assistant for Sparkling Stars Daycare.
                     Your goal is to answer user questions concisely based ONLY on the provided website information.
                     Do not make up information. Be helpful, polite, and keep your answers brief and to the point.
-
-                    If you cannot find the answer in the provided text, or if the user is asking to enroll, schedule a tour, or has a very specific question that requires personal attention (like about a child with special needs), respond with ONLY the exact text: "NEEDS_EMAIL".
-
-                    Here is the website information:
-                    ---
-                    ${websiteContext}
-                    ---
-
-                    User's question: "${userMessage}"
+                    If you cannot find the answer in the provided text, or if the user is asking to enroll, schedule a tour, or has a very specific question that requires personal attention, respond with ONLY the exact text: "NEEDS_EMAIL".
+                    Here is the website information: --- ${context} ---
                 `;
-                
-                const payload = {
-                    contents: [{
-                        parts: [{ text: prompt }]
-                    }]
-                };
 
-                try {
-                    const response = await fetch(apiUrl, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
-                    });
-
-                    if (!response.ok) {
-                        throw new Error(`API Error: ${response.statusText}`);
+                const response = await ai.models.generateContent({
+                    model: 'gemini-3-flash-preview',
+                    contents: text,
+                    config: {
+                        systemInstruction: systemPrompt
                     }
-
-                    const result = await response.json();
-                    const botResponse = result.candidates[0].content.parts[0].text.trim();
-
-                    removeLoadingIndicator();
-
-                    if (botResponse === "NEEDS_EMAIL") {
-                        addMessage("That's a great question! For that, it's best to speak with the daycare directly. I can help you draft an email. Does that sound good?", 'bot');
-                        showEmailDraftModal(userMessage);
-                    } else {
-                        addMessage(botResponse, 'bot');
-                    }
-                } catch (error) {
-                    removeLoadingIndicator();
-                    console.error("Chatbot API Error:", error);
-                    addMessage("Oops! I'm having a little trouble connecting right now. Please try again in a moment.", 'bot');
-                }
-            }
-
-            async function sendMessage() {
-                const userMessage = chatbotInputField.value.trim();
-                if (userMessage === '') return;
-
-                addMessage(userMessage, 'user');
-                chatbotInputField.value = '';
-
-                await getBotResponse(userMessage);
-            }
-
-            // --- Email Modal Logic ---
-            function showEmailDraftModal(userQuestion) {
-                emailToField.value = daycareEmail;
-                emailSubjectField.value = `Inquiry from Website Chat: ${userQuestion.substring(0, 40)}...`;
-                emailBodyField.value = `Dear Sparkling Stars Daycare,\n\nI was using the chatbot on your website and had the following question:\n\n"${userQuestion}"\n\nCould you please provide me with more information?\n\nThank you,\n[Your Name]`;
-                emailModalBackdrop.style.display = 'flex';
-                void emailModalBackdrop.offsetWidth; // Reflow to enable transition
-                emailModalBackdrop.classList.add('open');
-            }
-
-            function closeEmailDraftModal() {
-                emailModalBackdrop.classList.remove('open');
-                emailModalBackdrop.addEventListener('transitionend', function handler() {
-                    emailModalBackdrop.style.display = 'none';
-                    emailModalBackdrop.removeEventListener('transitionend', handler);
                 });
-            }
 
-            emailModalCloseButton.addEventListener('click', closeEmailDraftModal);
-            sendEmailButton.addEventListener('click', () => {
-                const to = encodeURIComponent(emailToField.value);
-                const subject = encodeURIComponent(emailSubjectField.value);
-                const body = encodeURIComponent(emailBodyField.value);
-                window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
-                closeEmailDraftModal();
-            });
-        });
+                // Remove loading indicator
+                const loading = document.getElementById('chat-loading');
+                if(loading) loading.remove();
+
+                const botText = response.text?.trim();
+
+                if (botText === "NEEDS_EMAIL") {
+                    window.appendMessage("That's a great question! For that, it's best to speak with the daycare directly. I can help you draft an email. Does that sound good?", 'bot');
+                    setTimeout(() => window.openEmailModal(), 1500);
+                } else {
+                    window.appendMessage(botText || "I'm sorry, I couldn't process that request right now.", 'bot');
+                }
+
+            } catch (error) {
+                console.error("AI Error:", error);
+                const loading = document.getElementById('chat-loading');
+                if(loading) loading.remove();
+                window.appendMessage("Oops! I'm having a little trouble connecting right now. Please try again in a moment.", 'bot');
+            }
+        };
     </script>
 </body>
 </html>

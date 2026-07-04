@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --font-nunito: "Nunito", sans-serif;
+  --font-poppins: "Poppins", sans-serif;
+  --color-primary: #FF7F50;
+  --color-secondary: #48D1CC;
+  --color-accent: #FFD700;
+  --color-dark: #5D6D7E;
+  --color-off-white: #F8F9FA;
+  --color-bg-light-1: #E0F7FA;
+  --color-bg-light-2: #FFF9C4;
+  --color-bg-light-3: #F8BBD0;
+  --color-bg-light-4: #D1C4E9;
+}
+
+body {
+  background: linear-gradient(120deg, #E0F7FA, #FFF9C4, #F8BBD0, #D1C4E9);
+  background-size: 400% 400%;
+  background-attachment: fixed;
+  animation: gradientBG 15s ease infinite;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Smooth transition classes */
+.section-fade-enter {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.section-fade-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms ease-out, transform 300ms ease-out;
+}

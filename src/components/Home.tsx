@@ -7,15 +7,16 @@ interface HomeProps {
 
 export default function Home({ setCurrentPage }: HomeProps) {
   return (
-    <div className="relative h-[85vh] flex items-center justify-center text-center text-white overflow-hidden">
+    <div className="relative h-[85vh] flex items-center justify-center text-center text-white">
       {/* Background with custom linear-gradient */}
-      <div 
-        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat transition-transform duration-10000 ease-out scale-105"
-        style={{ 
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.45)), url('https://raw.githubusercontent.com/ssdaycare/ssdaycare.github.io/main/writing.jpg')` 
-        }}
-      />
-      
+     <div className="absolute inset-0 z-0 overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-10000 ease-out scale-105"
+          style={{ 
+            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.45)), url('https://raw.githubusercontent.com/ssdaycare/ssdaycare.github.io/main/writing.jpg')` 
+          }}
+        />
+      </div>
       {/* Content Overlay */}
       <div className="relative z-10 max-w-4xl px-4">
         <motion.div

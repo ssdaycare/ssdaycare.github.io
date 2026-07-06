@@ -40,3 +40,7 @@ body {
   transform: translateY(0);
   transition: opacity 300ms ease-out, transform 300ms ease-out;
 }
+
+button {
+  touch-action: manipulation;
+}

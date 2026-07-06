@@ -132,3 +132,4 @@ export default function Navbar({ currentPage, setCurrentPage }: NavbarProps) {
       </div>
     </header>
   );
+}

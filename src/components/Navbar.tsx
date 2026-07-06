@@ -93,10 +93,10 @@ export default function Navbar({ currentPage, setCurrentPage }: NavbarProps) {
         </nav>
 
         {/* Mobile Dropdown */}
+        {/* Mobile Dropdown */}
+        {isOpen && (
         <div 
-          className={`absolute top-full left-0 w-full bg-white shadow-lg transition-all duration-300 ease-in-out lg:hidden overflow-hidden ${
-            isOpen ? 'max-h-[85vh] opacity-100 py-4' : 'max-h-0 opacity-0 pointer-events-none'
-          }`}
+          className="absolute top-full left-0 w-full bg-white shadow-lg lg:hidden py-4"
           id="mobile-menu"
         >
           <ul className="flex flex-col px-4 space-y-2">
@@ -127,9 +127,9 @@ export default function Navbar({ currentPage, setCurrentPage }: NavbarProps) {
                 Enroll Now
               </button>
             </li>
-          </ul>
+        </ul>
         </div>
+        )}
       </div>
     </header>
   );
-}

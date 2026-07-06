@@ -93,7 +93,6 @@ export default function Navbar({ currentPage, setCurrentPage }: NavbarProps) {
         </nav>
 
         {/* Mobile Dropdown */}
-        {/* Mobile Dropdown */}
         {isOpen && (
         <div 
           className="absolute top-full left-0 w-full bg-white shadow-lg lg:hidden py-4"

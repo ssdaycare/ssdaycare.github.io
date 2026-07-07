@@ -105,7 +105,7 @@ export default function Chatbot({ onNeedsEmail }: ChatbotProps) {
   };
 
   return (
-    <div className="fixed bottom-4 right-4 sm:bottom-8 sm:right-8 z-[1000] flex flex-col items-end">
+   <div className="fixed bottom-4 right-4 sm:bottom-8 sm:right-8 z-[1000] flex flex-col items-end pointer-events-none">
       {/* Chat Window */}
       <div 
         className={`mb-4 bg-white rounded-2xl shadow-2xl w-[calc(100vw-2rem)] sm:w-96 h-[65vh] sm:h-[500px] max-h-[80vh] overflow-hidden transition-all duration-300 origin-bottom-right border border-gray-100 flex flex-col ${
@@ -180,10 +180,10 @@ export default function Chatbot({ onNeedsEmail }: ChatbotProps) {
       </div>
 
       {/* Chat Toggle Button */}
-      <button 
-        onClick={() => setIsOpen(!isOpen)} 
-        className="bg-primary hover:bg-secondary text-white p-4 rounded-full shadow-lg transition-all duration-300 hover:scale-110 flex items-center justify-center w-16 h-16 focus:outline-none"
-      >
+   <button 
+  onClick={() => setIsOpen(!isOpen)} 
+  className="bg-primary hover:bg-secondary text-white p-4 rounded-full shadow-lg transition-all duration-300 hover:scale-110 flex items-center justify-center w-16 h-16 focus:outline-none pointer-events-auto"
+>
         {isOpen ? <X className="w-7 h-7" /> : <MessageSquare className="w-7 h-7" />}
       </button>
     </div>

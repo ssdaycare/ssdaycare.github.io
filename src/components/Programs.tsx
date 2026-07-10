@@ -1,8 +1,7 @@
 import { motion } from 'motion/react';
 import { useEffect, useState } from 'react';
 import { PROGRAMS } from '../data';
-import { fetchLiveAvailability, ProgramAvailability } from './availabilityService'; // Adjust path as needed
-
+import { fetchLiveAvailability, ProgramAvailability } from '../availabilityService';
 export default function Programs() {
   const [availability, setAvailability] = useState<Record<string, ProgramAvailability>>({});
   const [loading, setLoading] = useState<boolean>(true);

@@ -8,7 +8,7 @@ export const CONTACT_INFO: ContactInfo = {
   provider: "Nalini Ghai"
 };
 
-export const ABOUT_TEXT = "Sparkling Stars Daycare is a licensed child care home that provides care and supervision for up to 12 children between the ages of 12 months and 12 years. Operated in the provider’s private residence, we strive to create a safe and stimulating environment for all children. We may be able to accommodate children with delays and differing needs. Please contact us for further information.";
+export const ABOUT_TEXT = "Sparkling Stars Daycare is a licensed child care home that provides care and supervision for children between the ages of 0-12 years. Operated in the provider’s private residence, we strive to create a safe and stimulating environment for all children. We may be able to accommodate children with delays and differing needs. Please contact us for further information.";
 
 export const PHILOSOPHY_FEATURES: PhilosophyFeature[] = [
   { 

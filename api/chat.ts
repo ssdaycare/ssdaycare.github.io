@@ -29,7 +29,7 @@ export default async function handler(req: any, res: any) {
     });
 
     const context = `
-      ABOUT: Sparkling Stars Daycare is a licensed child care home that provides care and supervision for up to 12 children between the ages of 12 months and 12 years. Operated in the provider’s private residence, we strive to create a safe and stimulating environment for all children. We may be able to accommodate children with delays and differing needs. Please contact us for further information.
+      ABOUT: Sparkling Stars Daycare is a licensed child care home that provides care and supervision for up to 12 children between the ages of 0-12 years. Operated in the provider's private residence, we strive to create a safe and stimulating environment for all children. We may be able to accommodate children with delays and differing needs. Please contact us for further information.
       LOCATION: 715 Pohorecky Crescent, Saskatoon SK S7W 0J4.
       PROVIDER: Nalini Ghai.
       CONTACT: Phone: 306-850-4790, Email: nalinighai04@gmail.com.
@@ -51,7 +51,7 @@ export default async function handler(req: any, res: any) {
       - Allergy Awareness: Maintains a careful approach to accommodate food allergies and dietary restrictions, ensuring all meals are safe for every child.
       - Healthy Snacks: Offers nutritious snacks, such as fresh fruit, yogurt, and whole-grain options, to keep energy levels stable throughout the day.
       ACCESSIBILITY: Wide doorways, adaptive play equipment with soft flooring, accessible restrooms with grab bars, child-sized furniture. We prioritize safety with gates, offer diverse learning materials, and ensure accessible outdoor paths. Clear emergency exits and staff training on inclusivity.
-      ELIGIBILITY: Ages 12 months to 12 years. May accommodate delays/differing needs.
+      ELIGIBILITY: Ages 0-12 years. May accommodate delays/differing needs.
       FEES: Contact us directly for current fees.
     `;
 
@@ -119,7 +119,7 @@ export default async function handler(req: any, res: any) {
       return res.status(200).json({
         reply: "NEEDS_EMAIL",
         paraphrasedSubject: `Inquiry about Sparkling Stars Daycare`,
-        paraphrasedBody: `Dear Sparkling Stars Daycare,\n\nI am reaching out regarding the following inquiry:\n\n"${message}"\n\nCould you please provide me with more information?\n\nThank you,\n[Your Name]`
+        paraphrasedBody: `Dear Sparkling Stars Daycare,\n\nI am reaching out regarding the following inquiry:\n\n"${message}"\n\nCould you please provide me with more information?\n\nThank you,\n[Your Name]`,
       });
     }
 
